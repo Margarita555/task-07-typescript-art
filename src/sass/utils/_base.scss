@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(../../font/Montserrat-Regular.woff);
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../../font/Montserrat-Light.woff);
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url(../../font/Montserrat-Medium.woff);
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+body {
+  font-family: "Montserrat";
+  color: $primary-text-color;
+  background-color: $primary-background-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.title {
+  position: relative;
+  font-family: $main-font;
+  font-size: 20px;
+  line-height: 1.21;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  // color: $primary-text-color;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+
+  //   @media screen and (min-width: 480px) and (max-width: 767px) {
+  //     max-width: 450px;
+  //   }
+
+  //   @media screen and (min-width: 768px) and (max-width: 1199px) {
+  //     max-width: 768px;
+  //   }
+}
+
+// @media screen and (min-width: 1500px) {
+//   .container {
+//     max-width: 1500px;
+//   }
+// }
+
+// @media screen and (min-width: 1500px) {
+//   .section {
+//     padding-top: 120px;
+//     padding-bottom: 120px;
+//   }
+// }
+
+// .button {
+//   padding: 20px 45px 18px 45px;
+//   font-family: Gotham Pro;
+//   font-size: 14px;
+//   line-height: 1.15;
+//   color: $secondary-text-color;
+//   background-color: transparent;
+//   border: 1px solid $secondary-text-color;
+//   text-transform: uppercase;
+//   cursor: pointer;
+// }

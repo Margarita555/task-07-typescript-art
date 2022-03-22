@@ -1,0 +1,36 @@
+/* body {
+  background-color: aqua;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1500px) {
+  .container {
+    max-width: 1500px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+.button {
+  padding: 20px 45px 18px 45px;
+  font-family: Gotham Pro;
+  font-size: 14px;
+  line-height: 1.15;
+
+  background-color: transparent;
+
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@import "components/header.css"; */
