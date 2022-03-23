@@ -1,20 +1,58 @@
-const { src, dest } = require("gulp");
-const fileinclude = require("gulp-file-include");
-// const htmlmin = require("gulp-htmlmin");
+const { src, dest, watch, series, parallel } = require("gulp");
+const browserSync = require("browser-sync").create();
 
+const plumber = require("gulp-plumber");
+const notify = require("gulp-notify");
+const fileinclude = require("gulp-file-include");
+const htmlmin = require("gulp-htmlmin");
+const size = require("gulp-size");
+const del = require("del");
+// const size = require("gulp-size");
 // const path = require("../config/path");
-// const app = require("../config/app");
 
 const html = () => {
-  return (
-    src("./src/html/*.html")
-      .pipe(fileinclude())
-      //     .pipe(htmlmin(app.htmlmin))
-      .pipe(dest("./public"))
-  );
+  return src("./src/html/*.html")
+    .pipe(
+      plumber({
+        errorHandler: notify.onError((error) => ({
+          title: "HTML",
+          message: error.message,
+        })),
+      })
+    )
+    .pipe(fileinclude())
+    .pipe(size({ title: "size before minification" }))
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(size({ title: "size after minification" }))
+    .pipe(dest("./public"))
+    .pipe(browserSync.stream());
+};
+
+const watcher = () => {
+  watch("./src/html/**/*.html", html);
+  // watch(path.scss.watch, scss).on("all", browserSync.reload);
+  // watch(path.js.watch, js).on("all", browserSync.reload);
+  // watch(path.img.watch, img).on("all", browserSync.reload);
+  // watch(path.font.watch, font).on("all", browserSync.reload);
+};
+
+const server = () => {
+  browserSync.init({
+    server: {
+      baseDir: "./public",
+    },
+  });
+};
+
+const clear = () => {
+  return del("./public");
 };
 
 exports.html = html;
+exports.watch = watcher;
+exports.clear = clear;
+
+exports.dev = series(clear, html, parallel(watcher, server));
 
 // const { watch, series, parallel } = require("gulp");
 // const browserSync = require("browser-sync").create();
