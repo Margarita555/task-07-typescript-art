@@ -1,36 +1,15 @@
-const { src, dest, watch, series, parallel } = require("gulp");
+const { watch, series, parallel } = require("gulp");
 const browserSync = require("browser-sync").create();
 
-const plumber = require("gulp-plumber");
-const notify = require("gulp-notify");
-const fileinclude = require("gulp-file-include");
-const htmlmin = require("gulp-htmlmin");
-const size = require("gulp-size");
-const del = require("del");
-// const size = require("gulp-size");
-// const path = require("../config/path");
+const path = require("./config/path.js");
 
-const html = () => {
-  return src("./src/html/*.html")
-    .pipe(
-      plumber({
-        errorHandler: notify.onError((error) => ({
-          title: "HTML",
-          message: error.message,
-        })),
-      })
-    )
-    .pipe(fileinclude())
-    .pipe(size({ title: "size before minification" }))
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(size({ title: "size after minification" }))
-    .pipe(dest("./public"))
-    .pipe(browserSync.stream());
-};
+const clear = require("./task/clear.js");
+const html = require("./task/html.js");
+const css = require("./task/css.js");
 
 const watcher = () => {
-  watch("./src/html/**/*.html", html);
-  // watch(path.scss.watch, scss).on("all", browserSync.reload);
+  watch(path.html.watch, html).on("all", browserSync.reload);
+  watch(path.css.watch, css).on("all", browserSync.reload);
   // watch(path.js.watch, js).on("all", browserSync.reload);
   // watch(path.img.watch, img).on("all", browserSync.reload);
   // watch(path.font.watch, font).on("all", browserSync.reload);
@@ -39,20 +18,17 @@ const watcher = () => {
 const server = () => {
   browserSync.init({
     server: {
-      baseDir: "./public",
+      baseDir: path.root,
     },
   });
-};
-
-const clear = () => {
-  return del("./public");
 };
 
 exports.html = html;
 exports.watch = watcher;
 exports.clear = clear;
+exports.css = css;
 
-exports.dev = series(clear, html, parallel(watcher, server));
+exports.dev = series(clear, parallel(html, css), parallel(watcher, server));
 
 // const { watch, series, parallel } = require("gulp");
 // const browserSync = require("browser-sync").create();

@@ -1,9 +1,9 @@
-// const del = require("del");
+const del = require("del");
 
-// const path = require("../config/path");
+const path = require("../config/path.js");
 
-// const clear = () => {
-//   return del(path.root);
-// };
+const clear = () => {
+  return del(path.root);
+};
 
-// module.exports = clear;
+module.exports = clear;

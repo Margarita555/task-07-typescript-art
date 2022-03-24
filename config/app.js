@@ -1,17 +1,17 @@
-isProd = process.argv.includes("--production");
-isDev = !isProd;
+// isProd = process.argv.includes("--production");
+// isDev = !isProd;
 
 module.exports = {
-  isProd: isProd,
-  isDev: isDev,
+  // isProd: isProd,
+  // isDev: isDev,
 
   htmlmin: {
-    collapseWhitespace: isProd,
+    collapseWhitespace: true,
   },
 
-  webpack: {
-    mode: isProd ? "production" : "development",
-  },
+  // webpack: {
+  //   mode: isProd ? "production" : "development",
+  // },
 
   //   imagemin: {
   //     verbose: true,
