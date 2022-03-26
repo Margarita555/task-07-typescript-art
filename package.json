@@ -1,5 +1,5 @@
 {
-  "name": "gulp-es6",
+  "name": "task-07-typescript-art",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Margarita555/gulp-es6.git"
+    "url": "git+https://github.com/Margarita555/task-07-typescript-art.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Margarita555/gulp-es6/issues"
+    "url": "https://github.com/Margarita555/task-07-typescript-art/issues"
   },
-  "homepage": "https://github.com/Margarita555/gulp-es6#readme",
+  "homepage": "https://github.com/Margarita555/task-07-typescript-art#readme",
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/preset-env": "^7.16.11",
