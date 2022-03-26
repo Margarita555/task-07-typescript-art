@@ -1,16 +1,26 @@
-// const { src, dest } = require("gulp");
-// const imagemin = require("gulp-imagemin");
-// const newer = require("gulp-newer");
-// const gulpif = require("gulp-if");
+import gulp from "gulp";
+import plumber from "gulp-plumber";
+import notify from "gulp-notify";
+import imagemin from "gulp-imagemin";
+import newer from "gulp-newer";
+import gulpif from "gulp-if";
 
-// const path = require("../config/path");
-// const app = require("../config/app");
+import path from "../config/path.js";
+import app from "../config/app.js";
 
-// const img = () => {
-//   return src(path.img.src)
-//     .pipe(newer(path.img.dest))
-//     .pipe(gulpif(app.isProd, imagemin(app.imagemin)))
-//     .pipe(dest(path.img.dest));
-// };
+const img = () => {
+  return gulp.src(path.img.src)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError((error) => ({
+          title: "Image",
+          message: error.message,
+        })),
+      })
+    )
+    .pipe(newer(path.img.dest))
+    .pipe(gulpif(app.isProd, imagemin(app.imagemin)))
+    .pipe(gulp.dest(path.img.dest));
+};
 
-// module.exports = img;
+export default img;

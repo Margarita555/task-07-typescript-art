@@ -1,15 +1,16 @@
-const { src, dest } = require("gulp");
-const fileinclude = require("gulp-file-include");
-const htmlmin = require("gulp-htmlmin");
-const plumber = require("gulp-plumber");
-const notify = require("gulp-notify");
-const size = require("gulp-size");
+import gulp from "gulp";
+import fileinclude from "gulp-file-include";
+import htmlmin from "gulp-htmlmin";
+import plumber from "gulp-plumber";
+import notify from "gulp-notify";
+import size from "gulp-size";
 
-const path = require("../config/path.js");
-const app = require("../config/app.js");
+import path from "../config/path.js";
+import app from "../config/app.js";
 
 const html = () => {
-  return src(path.html.src)
+  return gulp
+    .src(path.html.src)
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
@@ -22,7 +23,7 @@ const html = () => {
     .pipe(size({ title: "size before minification" }))
     .pipe(htmlmin(app.htmlmin))
     .pipe(size({ title: "size after minification" }))
-    .pipe(dest(path.html.dest));
+    .pipe(gulp.dest(path.html.dest));
 };
 
-module.exports = html;
+export default html;

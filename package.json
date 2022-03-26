@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp --production"
+    "start": "gulp --experimental-json-modules",
+    "build": "gulp --production --experimental-json-modules"
   },
   "browserslist": [
     "last 3 versions"
@@ -42,7 +43,7 @@
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^8.0.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-newer": "^1.4.0",
     "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",
@@ -56,5 +57,6 @@
     "sass": "^1.49.9",
     "webpack": "^5.70.0",
     "webpack-stream": "^7.0.0"
-  }
+  },
+  "dependencies": {}
 }

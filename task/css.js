@@ -9,32 +9,29 @@ const rename = require("gulp-rename");
 const shorthand = require("gulp-shorthand");
 const groupCssMediaQueries = require("gulp-group-css-media-queries");
 
-const path = require("../config/path");
-const app = require("../config/app");
-// const { isProd } = require("../config/app");
+const path = require("../config/path.js");
+const app = require("../config/app.js");
+const { isProd } = require("../config/app.js");
 
 const css = () => {
-  return (
-    src(path.css.src)
-      .pipe(
-        plumber({
-          errorHandler: notify.onError((error) => ({
-            title: "CSS",
-            message: error.message,
-          })),
-        })
-      )
-      .pipe(concat("main.css"))
-      .pipe(cssimport())
-      .pipe(autoprefixer())
-      .pipe(shorthand())
-      .pipe(groupCssMediaQueries())
-      //   .pipe(dest(path.css.dest, { sourcemaps: app.isDev }))
-      .pipe(dest(path.css.dest, { sourcemaps: true }))
-      .pipe(rename({ suffix: ".min" }))
-      .pipe(csso())
-      .pipe(dest(path.css.dest))
-  );
+  return src(path.css.src)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError((error) => ({
+          title: "CSS",
+          message: error.message,
+        })),
+      })
+    )
+    .pipe(concat("main.css"))
+    .pipe(cssimport())
+    .pipe(autoprefixer())
+    .pipe(shorthand())
+    .pipe(groupCssMediaQueries())
+    .pipe(dest(path.css.dest, { sourcemaps: app.isDev }))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(csso())
+    .pipe(dest(path.css.dest));
 };
 
 // const css = () => {
