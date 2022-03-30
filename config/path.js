@@ -23,8 +23,8 @@ export default {
   },
 
   js: {
-    src: pathSrc + "/js/*.js",
-    watch: pathSrc + "/js/**/*.js",
+    src: [pathSrc + "/js/**/*.ts", pathSrc + "/js/**/*.js"],
+    watch: pathSrc + "/js/**/*.ts",
     dest: pathDest + "/js",
   },
 

@@ -53,8 +53,10 @@
     "gulp-shorthand": "^1.1.0",
     "gulp-size": "^4.0.1",
     "gulp-ttf2woff2": "^4.0.1",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.49.9",
+    "typescript": "^4.6.3",
     "webpack": "^5.70.0",
     "webpack-stream": "^7.0.0"
   },
