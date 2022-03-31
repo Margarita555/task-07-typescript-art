@@ -1,8 +1,7 @@
-// {
-//   "files": ["src/js/main.ts", "src/js/main.js"],
-//   "compilerOptions": {
-//     "noImplicitAny": true,
-//     "target": "es6",
-//     "allowJs": true
-//   }
-// }
+{
+  "files": ["src/js/main.ts"],
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es5"
+  }
+}

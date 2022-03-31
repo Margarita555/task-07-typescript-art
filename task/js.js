@@ -4,7 +4,7 @@ import notify from "gulp-notify";
 import babel from "gulp-babel";
 import webpack from "webpack-stream";
 import ts from "gulp-typescript";
-// const tsProject = ts.createProject("tsconfig.json");
+const tsProject = ts.createProject("tsconfig.json");
 
 import path from "../config/path.js";
 import app from "../config/app.js";
@@ -19,14 +19,15 @@ const js = () => {
       //     outFile: path.js.dest,
       //   })
       // )
-      // .pipe(tsProject())
-      .pipe(
-        ts({
-          noImplicitAny: true,
-          allowJs: true,
-          outFile: path.js.dest,
-        })
-      )
+      .pipe(tsProject())
+
+      // .pipe(
+      //   ts({
+      //     noImplicitAny: true,
+      //     allowJs: true,
+      //     outFile: path.js.dest,
+      //   })
+      // )
       .pipe(
         plumber({
           errorHandler: notify.onError((error) => ({
